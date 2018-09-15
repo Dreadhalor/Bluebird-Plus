@@ -1,11 +1,13 @@
 export class Queue {
 
-  queue = [];
-  running = false;
+  private queue;
+  private running = false;
 
-  constructor(){}
+  constructor(){
+    this.queue = [];
+  }
 
-  queuePromise(args, fxn) {
+  private queuePromise(args, fxn) {
     let pair = {
       args: args,
       fxn: fxn
@@ -13,7 +15,7 @@ export class Queue {
     this.queue.push(pair);
     if (!this.running) this.advanceQueue();
   }
-  advanceQueue() {
+  private advanceQueue() {
     this.running = true;
     if (this.queue.length > 0){
       let pair = this.queue.pop();
@@ -22,5 +24,9 @@ export class Queue {
         .catch(error => this.advanceQueue());
     } else this.running = false;
   }
+  public push(args, fxn){
+    this.queuePromise(args, fxn);
+  }
+
 
 }
