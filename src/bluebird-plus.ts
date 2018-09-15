@@ -1,26 +1,7 @@
-export module BluebirdPlus {
-  
-  const Promise = require('bluebird');
+import { Queue } from './queue';
 
-  let queue = [];
-  let running = false;
-  const queuePromise = (args, fxn) => {
-    let pair = {
-      args: args,
-      fxn: fxn
-    }
-    queue.push(pair);
-    if (!running) advanceQueue();
-  }
-  const advanceQueue = () => {
-    running = true;
-    if (queue.length > 0){
-      let pair = queue.pop();
-      pair.fxn(pair.args)
-        .then(success => advanceQueue())
-        .catch(error => advanceQueue());
-    } else running = false;
-  }
+export module BluebirdPlus {
+  const Promise = require('bluebird');
 
   const nestedPromiseAll = (groups, fxn) => {
     return Promise.all(groups.map(
@@ -39,7 +20,7 @@ export module BluebirdPlus {
     )
   }
 
-  exports.queue = queuePromise;
+  exports.Queue = Queue;
   exports.nestedPromiseAll = nestedPromiseAll;
   exports.sequentialPromiseAll = sequentialPromiseAll;
 }
