@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Queue = /** @class */ (function () {
     function Queue() {
-        this.queue = [];
         this.running = false;
+        this.queue = [];
     }
     Queue.prototype.queuePromise = function (args, fxn) {
         var pair = {
@@ -25,6 +25,9 @@ var Queue = /** @class */ (function () {
         }
         else
             this.running = false;
+    };
+    Queue.prototype.push = function (args, fxn) {
+        this.queuePromise(args, fxn);
     };
     return Queue;
 }());
