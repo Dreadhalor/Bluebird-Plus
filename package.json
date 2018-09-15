@@ -1,0 +1,19 @@
+{
+  "name": "bluebird-plus",
+  "version": "1.0.0",
+  "description": "Bluebird, but with some extra features I've found useful.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dreadhalor/Bluebird-Plus.git"
+  },
+  "author": "Scott Hetrick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dreadhalor/Bluebird-Plus/issues"
+  },
+  "homepage": "https://github.com/Dreadhalor/Bluebird-Plus#readme"
+}
