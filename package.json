@@ -1,6 +1,6 @@
 {
   "name": "@dreadhalor/bluebird-plus",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Bluebird, but with some extra features I've found useful.",
   "main": "dist/index.js",
   "files": [
