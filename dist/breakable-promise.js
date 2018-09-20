@@ -31,6 +31,15 @@ var BreakablePromise = /** @class */ (function () {
         });
         return this;
     };
+    BreakablePromise.prototype.broken = function (handler) {
+        var _this = this;
+        this.promise = this.promise.then(function (result) {
+            if (!_this.unbroken) {
+                return handler(result);
+            }
+        });
+        return this;
+    };
     return BreakablePromise;
 }());
 exports.BreakablePromise = BreakablePromise;

@@ -31,4 +31,13 @@ export class BreakablePromise {
     return this;
   }
 
+  broken(handler: (any) => Promise<any>){
+    this.promise = this.promise.then(result => {
+      if (!this.unbroken) {
+        return handler(result)
+      }
+    });
+    return this;
+  }
+
 }
