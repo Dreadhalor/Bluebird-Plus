@@ -1,3 +1,4 @@
+import { BreakablePromise } from './breakable-promise';
 import { Queue } from './queue';
 
 export module BluebirdPlus {
@@ -20,7 +21,10 @@ export module BluebirdPlus {
     )
   }
 
+  const convertToBreakable = (promise) => new BreakablePromise(promise);
+
   exports.Queue = Queue;
+  exports.convertToBreakable = convertToBreakable;
   exports.nestedPromiseAll = nestedPromiseAll;
   exports.sequentialPromiseAll = sequentialPromiseAll;
 }
