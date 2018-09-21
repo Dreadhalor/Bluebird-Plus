@@ -10,6 +10,7 @@ var BreakablePromise = /** @class */ (function () {
         this.promise = this.promise.then(function (result) {
             if (_this.unbroken)
                 return handler(result);
+            return result;
         });
         return this;
     };
@@ -18,6 +19,7 @@ var BreakablePromise = /** @class */ (function () {
         this.promise = this.promise.catch(function (result) {
             if (_this.unbroken)
                 return handler(result);
+            return result;
         });
         return this;
     };
@@ -28,6 +30,7 @@ var BreakablePromise = /** @class */ (function () {
                 _this.unbroken = false;
                 return handler(result);
             }
+            return result;
         });
         return this;
     };
@@ -37,6 +40,7 @@ var BreakablePromise = /** @class */ (function () {
             if (!_this.unbroken) {
                 return handler(result);
             }
+            return result;
         });
         return this;
     };

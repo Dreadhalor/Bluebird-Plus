@@ -10,6 +10,7 @@ export class BreakablePromise {
   then(handler: (any) => Promise<any>){
     this.promise = this.promise.then(result => {
       if (this.unbroken) return handler(result)
+      return result;
     });
     return this;
   }
@@ -17,6 +18,7 @@ export class BreakablePromise {
   catch(handler: (any) => Promise<any>){
     this.promise = this.promise.catch(result => {
       if (this.unbroken) return handler(result)
+      return result;
     });
     return this;
   }
@@ -26,7 +28,7 @@ export class BreakablePromise {
       if (this.unbroken) {
         this.unbroken = false;
         return handler(result)
-      }
+      } return result;
     });
     return this;
   }
@@ -35,7 +37,7 @@ export class BreakablePromise {
     this.promise = this.promise.then(result => {
       if (!this.unbroken) {
         return handler(result)
-      }
+      } return result;
     });
     return this;
   }
